@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Image Landing Page Pricing</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Sora:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="bg-shape bg-shape-1" aria-hidden="true"></div>
+  <div class="bg-shape bg-shape-2" aria-hidden="true"></div>
+
+  <header class="hero section">
+    <p class="eyebrow">Event AI Experience</p>
+    <h1>AI Image Landing Page for Events - Choose the Right Package</h1>
+    <p class="hero-copy">Pricing is driven by API usage, template complexity, and website features, hosting, and support.</p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="#comparison" data-track="hero_view_packages">View Packages</a>
+      <a class="btn btn-ghost" href="#comparison" data-track="hero_see_comparison">See Package Comparison</a>
+    </div>
+  </header>
+
+  <main>
+    <section id="comparison" class="section comparison-section">
+      <div class="section-head">
+        <p class="section-label">Top Comparison Block</p>
+        <h2>Pick the package, then inspect the detail level</h2>
+      </div>
+
+      <div id="planCards" class="plan-grid" aria-live="polite"></div>
+
+      <div class="matrix-shell">
+        <div class="matrix-toolbar">
+          <div id="viewToggle" class="segmented" role="tablist" aria-label="Comparison views"></div>
+          <button id="expandDetailsBtn" class="expand-link" type="button">Expand all details</button>
+        </div>
+
+        <div class="table-scroll" aria-label="Comparison table wrapper">
+          <table class="comparison-table">
+            <thead>
+              <tr>
+                <th scope="col">Capability</th>
+                <th scope="col">A</th>
+                <th scope="col">B</th>
+                <th scope="col">C</th>
+              </tr>
+            </thead>
+            <tbody id="comparisonBody"></tbody>
+          </table>
+        </div>
+
+        <p class="legend">Legend: <span>✅ Included</span> <span>◐ Optional</span> <span>- Not included</span> <span>Level 1/2/3 Complexity</span></p>
+      </div>
+
+      <aside id="detailsPanel" class="details-panel" hidden aria-live="polite">
+        <div class="details-head">
+          <h3>Full details panel</h3>
+          <button id="closeDetailsBtn" class="icon-plain" type="button" aria-label="Close details panel">Close</button>
+        </div>
+        <div id="detailsPanelBody" class="details-panel-body"></div>
+      </aside>
+    </section>
+
+    <section id="addons" class="section addons-section">
+      <div class="section-head">
+        <p class="section-label">Add-ons</p>
+        <h2>Service pack matrix by package level</h2>
+      </div>
+      <div id="addonsGrid" class="addons-grid" aria-live="polite"></div>
+    </section>
+
+    <section id="faq" class="section faq-section">
+      <div class="section-head">
+        <p class="section-label">FAQ / Q&amp;A</p>
+        <h2>Cost clarity for API, templates, and storage</h2>
+      </div>
+
+      <label class="faq-search-wrap" for="faqSearch">
+        <span>Search FAQ</span>
+        <input id="faqSearch" type="search" placeholder="Search API, template, storage, hosting..." />
+      </label>
+
+      <div id="faqList" class="faq-list" aria-live="polite"></div>
+    </section>
+
+    <section id="pros-cons" class="section pros-cons-section">
+      <div class="section-head">
+        <p class="section-label">Pros &amp; Cons</p>
+        <h2>Blunt trade-offs so clients choose faster</h2>
+      </div>
+      <div id="prosConsGrid" class="pros-grid" aria-live="polite"></div>
+    </section>
+
+    <section id="final-cta" class="section final-cta">
+      <h2>Ready to present these options to your client?</h2>
+      <p>Use this page to explain package scope, add-ons, and trade-offs clearly during sales conversations.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#comparison" data-track="final_review_packages">Review packages</a>
+        <a class="btn btn-ghost" href="#addons" data-track="final_review_addons">Review add-ons</a>
+        <a class="btn btn-ghost" href="#faq" data-track="final_review_faq">Review FAQ</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>AI Image Landing Page Packages</p>
+    <p>Structured for package selection, comparison, and conversion.</p>
+  </footer>
+
+  <div id="infoPopover" class="info-popover" role="dialog" aria-modal="false" hidden>
+    <button id="closePopoverBtn" class="icon-plain" type="button" aria-label="Close popover">Close</button>
+    <div id="popoverContent"></div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

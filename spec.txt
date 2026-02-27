@@ -1,0 +1,595 @@
+
+
+## 1) Page goal and success criteria
+
+### Goal
+
+Help clients quickly pick **Package A / B / C**, understand why costs differ (**API + Template + Website build/ops**), then convert via CTA (“Get quote”, “Book call”, “Run demo”).
+
+### Success metrics (track in analytics)
+
+* Plan card CTA click rate (A/B/C)
+* “Info icon opened” rate per row (shows what people don’t understand)
+* Add-on attach rate
+* FAQ expand rate (top 5 questions)
+* Lead form completion rate
+
+---
+
+## 2) Information architecture (top → bottom)
+
+1. **Hero + one-line value**
+2. **Top comparison block (pricing + matrix)** ✅ must be at the top
+3. **Add-ons block** ✅ must be directly below comparison
+4. **FAQ / Q&A block** ✅ focused on API cost, template cost, storage cost, etc.
+5. **Pros & Cons block** ✅ must be at the bottom
+6. **Final CTA + footer**
+
+This structure fits common pricing-page expectations (pricing + compare + FAQ). ([mrrunlocked.com][2])
+
+---
+
+## 3) Core UI components and behavior
+
+### 3.1 Hero (above the fold)
+
+**Elements**
+
+* Headline: “AI Image Landing Page for Events — Choose the Right Package”
+* Subhead: “Pricing is driven by API usage, template complexity, and website features/hosting/support.”
+* Primary CTA: “Get a Proposal”
+* Secondary CTA: “See Package Comparison”
+
+---
+
+### 3.2 Top comparison block (cards + comparison matrix)
+
+#### A) Plan cards (3 columns)
+
+Keep **exactly 3 tiers** to reduce decision fatigue and keep the choice simple. ([Simon-Kucher][3])
+
+Each card includes:
+
+* Package name + short tagline
+* “Best for” (1 line)
+* Price area (you can show **Starting from** or **Request quote**)
+* CTA button
+* Mini bullets (3 bullets max; details live in the matrix popovers)
+
+**Package names (recommended)**
+
+* **Package A — Basic (Stateless)**
+* **Package B — Insight (Metadata + Dashboard)**
+* **Package C — Platform (Database + Users + Reporting)**
+
+#### B) Comparison matrix (right under cards)
+
+Use a **static comparison table** (3 plans is perfect) with grouped rows. ([Nielsen Norman Group][1])
+
+**Matrix layout**
+
+* Left column: Row title + **info icon**
+* Columns: A / B / C
+* Cell values: ✅ Included / ◐ Optional / — Not included / “Level 1/2/3”
+
+#### C) Three row groups (tabs or segmented control)
+
+At the top of the matrix: a toggle with 3 views:
+
+1. **Features included**
+2. **What client gets**
+3. **What end-users get**
+
+This is where you satisfy your requirement: **title-only** rows in the table, with **rich detail on hover/click**.
+
+---
+
+### 3.3 Info icon details (your “must be more” requirement)
+
+**Important UX note:** If the detail is long/important, treat it as a **popover** (not a tiny tooltip). Popovers are meant for longer explanations; tooltips are meant for short labels. ([Red Hat design system][4])
+
+#### Interaction rules (desktop + mobile + accessibility)
+
+* Desktop: open on **hover** *and* **keyboard focus**, pin on **click**
+* Mobile: open on **tap** (hover doesn’t exist on touch devices)
+* Popover must be:
+
+  * **Dismissible** (close button + Esc)
+  * **Hoverable** (pointer can move into it)
+  * **Persistent** until dismissed (doesn’t vanish when user tries to read)
+  * This aligns with WCAG “Content on Hover or Focus”. ([W3C][5])
+
+#### Popover content template (consistent everywhere)
+
+Each info popover shows:
+
+* **Definition** (what the feature means)
+* **What we build** (implementation scope)
+* **Why it costs more/less** (drivers)
+* **Impact** (token waste / reliability / operations)
+* **Example** (1 short example)
+
+Also add a “**Expand all details**” link that opens a full “Details” panel for people who hate hover-reading (this also avoids hiding critical info behind hover). NN/g warns against relying on tooltips for vital info. ([Nielsen Norman Group][6])
+
+---
+
+## 4) Content spec (what goes in each package)
+
+Below is the **exact content inventory** you need to create in your CMS or JSON config.
+Each row has:
+
+* `title` (shown in table)
+* `detail` (shown in popover — MUST be longer)
+* `A/B/C value` (✅ / ◐ / — / Level)
+
+### 4.1 FEATURES INCLUDED (matrix rows)
+
+#### Row 1 — AI API Integration
+
+**Popover detail:**
+Definition: Connects your landing page to the chosen AI provider (auth, request, response handling).
+What we build: API request pipeline, retries, timeouts, error states, provider key protection, usage logging.
+Cost drivers: provider complexity, response time, concurrency, safety handling.
+Impact: stable generation flow, fewer “random failures,” predictable ops.
+
+* A: ✅ (basic)
+* B: ✅ (with usage logging)
+* C: ✅ (with monitoring + controls)
+
+#### Row 2 — API Cost Model (Usage-Based)
+
+**Popover detail:**
+Definition: AI providers charge per generation (tokens/credits/compute depending on platform).
+What we build: usage tracking hooks and optional limits.
+Cost drivers: how many calls, size/quality settings, retries, multi-step pipelines.
+Impact: budget control and transparent reporting.
+
+* A: ◐ (manual estimation)
+* B: ✅ (tracked)
+* C: ✅ (tracked + user/quota controls)
+
+#### Row 3 — Prompt Engineering Template (Placeholders)
+
+**Popover detail:**
+Definition: A structured prompt with placeholders (category/topic + user image references) to produce consistent results.
+What we build: prompt template library, placeholder injection rules, safe formatting, versioning.
+Cost drivers: number of categories, prompt iterations, consistency requirements.
+Impact: higher output quality and fewer wasted calls.
+
+* A: ✅ Basic template
+* B: ✅ Refined templates + versions
+* C: ✅ Advanced system + version control
+
+#### Row 4 — Template Complexity Level (Simple → Multi-step)
+
+**Popover detail:**
+Definition: Complexity is how many inputs, rules, and steps are required to reach the final image.
+What we build: single-step or multi-step pipelines, intermediate validations, chained prompts, staged outputs.
+Cost drivers: number of steps, number of user resources, branching logic.
+Impact: complex templates can deliver “wow” results but require more QA and cost control.
+
+* A: Level 1 (simple, low tokens)
+* B: Level 2 (more controls, moderate tokens)
+* C: Level 3 (multi-resource, multi-step)
+
+#### Row 5 — QA/QC for Input Resource (Upload Validation)
+
+**Popover detail:**
+Definition: Detects “wrong input” (bad format, low quality, wrong aspect, too blurry) before spending expensive generation calls.
+What we build: file rules, resolution checks, optional face/subject detection rules, user feedback messages.
+Cost drivers: strictness and number of checks; some checks cost compute (“qualification token/step”).
+Impact: fewer disappointing outputs, less wasted API spend, happier end users.
+
+* A: Basic checks (type/size)
+* B: Intermediate checks + guidance
+* C: Advanced checks + policies + logs
+
+#### Row 6 — Qualification Workflow (Multi-step Guidance)
+
+**Popover detail:**
+Definition: A guided wizard that asks users for steps/resources in the right order to reduce mistakes (especially for complex templates).
+What we build: stepper UI, validations per step, previews, “fix tips,” safe submit.
+Cost drivers: number of steps and branching conditions.
+Impact: users succeed more often on first try → higher satisfaction.
+
+* A: —
+* B: ◐ Optional
+* C: ✅ Included (recommended)
+
+#### Row 7 — Website Feature Development (Core UX)
+
+**Popover detail:**
+Definition: The actual web experience (upload UI, category selector, progress states, output display).
+What we build: responsive UI, loading/progress, error flows, download/share actions.
+Cost drivers: polish level, devices supported, edge-case handling.
+Impact: conversion and event success.
+
+* A: ✅
+* B: ✅
+* C: ✅ (more UX states + account flows)
+
+#### Row 8 — Backend Server
+
+**Popover detail:**
+Definition: A server layer for security (API keys), logging, and storage workflows.
+What we build: endpoints, job handling, queue (if needed), protection for secrets.
+Cost drivers: concurrency, queueing, logging depth.
+Impact: reliability and security go up.
+
+* A: —
+* B: ✅ Basic backend
+* C: ✅ Full backend
+
+#### Row 9 — User Resource Management: Stateless (Cookie Session)
+
+**Popover detail:**
+Definition: No saving—user uploads, generates, sees output; refresh/leave wipes it.
+What we build: client-side session storage only.
+Cost drivers: minimal.
+Impact: fast + cheap, but no retention.
+
+* A: ✅
+* B: —
+* C: —
+
+#### Row 10 — User Resource Management: Metadata Only
+
+**Popover detail:**
+Definition: Save lightweight event data (timestamps, category chosen, counts), NOT heavy images/outputs.
+What we build: event logging schema, dashboard metrics, export basics.
+Cost drivers: dashboard complexity.
+Impact: client gains insight without heavy storage cost.
+
+* A: —
+* B: ✅
+* C: ✅
+
+#### Row 11 — User Resource Management: Full Storage (Input + Output)
+
+**Popover detail:**
+Definition: Save uploaded images, generated outputs, and generation parameters for history and reporting.
+What we build: object storage, database records, lifecycle rules, permissions.
+Cost drivers: storage volume, retention time, CDN delivery.
+Impact: enables “real product” feel and future reporting.
+
+* A: —
+* B: —
+* C: ✅
+
+#### Row 12 — Database (None / Metadata / Full)
+
+**Popover detail:**
+Definition: Where records live (no DB vs analytics DB vs DB + asset references).
+What we build: schema, migrations, backups, access rules.
+Cost drivers: data size, backup frequency, retention.
+Impact: analytics and long-term value.
+
+* A: —
+* B: ✅ Metadata DB
+* C: ✅ Full DB
+
+#### Row 13 — Dashboard (Admin / Live / Reporting)
+
+**Popover detail:**
+Definition: Monitoring usage, events, categories, failures, and spend.
+What we build: admin UI, charts, filters, basic exports.
+Cost drivers: live updates, segmentation, reporting depth.
+Impact: clients can run events like a system, not guesswork.
+
+* A: —
+* B: ✅ Basic dashboard
+* C: ✅ Advanced dashboard + reports
+
+#### Row 14 — End-User Management (Accounts / Roles)
+
+**Popover detail:**
+Definition: Login, profiles, permissions, and user history.
+What we build: auth flows, passwordless/SSO options, roles (admin/user), account settings.
+Cost drivers: auth method, security requirements.
+Impact: repeat usage and retention.
+
+* A: —
+* B: —
+* C: ✅
+
+#### Row 15 — Deployment & Hosting
+
+**Popover detail:**
+Definition: Where the site and backend run (static hosting vs server + DB).
+What we build: CI/CD, environments (dev/stage/prod), secrets management, uptime monitoring.
+Cost drivers: infra complexity, traffic, SLA needs.
+Impact: stable performance during peak event traffic.
+
+* A: ✅ Static hosting
+* B: ✅ Hosting + backend
+* C: ✅ Hosting + backend + DB + storage
+
+#### Row 16 — Documentation, Support, Maintenance
+
+**Popover detail:**
+Definition: Handover docs + ongoing support to keep it running as APIs evolve.
+What we build: user guide, admin guide, runbook, incident process, update plan.
+Cost drivers: SLA level, response time, frequency of updates.
+Impact: reduces downtime risk and “broken after launch.”
+
+* A: ✅ Basic handover
+* B: ✅ Handover + maintenance options
+* C: ✅ Full runbooks + SLA options
+
+---
+
+### 4.2 WHAT CLIENT GETS (matrix rows)
+
+These rows describe **why/how business value appears**.
+
+#### Row 1 — Clear pricing structure (API + Template + Website)
+
+**Popover detail:**
+Why: removes confusion; clients see what they’re paying for.
+How: pricing sections map to (1) usage-based API, (2) one-time template build, (3) web build + hosting + support.
+
+* A/B/C: ✅
+
+#### Row 2 — Fast delivery option (time-to-event)
+
+**Popover detail:**
+Why: some clients need a working event page quickly.
+How: Package A minimizes backend and storage scope.
+
+* A: ✅
+* B: ◐
+* C: —
+
+#### Row 3 — Reduced token waste (cost control)
+
+**Popover detail:**
+Why: bad uploads + weak prompts burn money with disappointing output.
+How: QA/QC + prompt engineering + qualification steps reduce failed runs.
+
+* A: ◐
+* B: ✅
+* C: ✅ (best)
+
+#### Row 4 — Behavioral insights (what users actually do)
+
+**Popover detail:**
+Why: helps improve the event and prove ROI to stakeholders.
+How: metadata logging + dashboards show usage patterns and popular categories.
+
+* A: —
+* B: ✅
+* C: ✅
+
+#### Row 5 — Reporting for future events / stakeholders
+
+**Popover detail:**
+Why: sponsors/teams often require post-event reporting.
+How: database + exports + dashboard reporting.
+
+* A: —
+* B: ◐ (limited)
+* C: ✅
+
+#### Row 6 — Future monetization readiness
+
+**Popover detail:**
+Why: if the client later sells credits, limits usage, or makes a SaaS, architecture matters.
+How: accounts + quotas + logs enable paywalls and tiering.
+
+* A: —
+* B: ◐
+* C: ✅
+
+---
+
+### 4.3 WHAT END-USERS GET (matrix rows)
+
+#### Row 1 — “Click → Upload → Generate” simplicity
+
+**Popover detail:**
+Why users love it: low friction; no learning curve.
+How: minimal steps, strong UI feedback, fast results.
+
+* A: ✅ (best)
+* B: ✅
+* C: ◐ (more steps if accounts are required)
+
+#### Row 2 — Better output quality consistency
+
+**Popover detail:**
+Why users love it: they trust the tool because results feel intentional, not random.
+How: refined prompts + placeholders + tested templates.
+
+* A: ◐
+* B: ✅
+* C: ✅ (best)
+
+#### Row 3 — Fewer “wrong upload” failures
+
+**Popover detail:**
+Why users love it: they don’t waste time; they get guidance before generating.
+How: QA/QC checks + qualification workflow.
+
+* A: ◐
+* B: ✅
+* C: ✅ (best)
+
+#### Row 4 — Saved history & re-download (if needed)
+
+**Popover detail:**
+Why users love it: they can come back, share later, or regenerate.
+How: storage + accounts + history pages.
+
+* A: —
+* B: —
+* C: ✅
+
+#### Row 5 — Live event experience (optional)
+
+**Popover detail:**
+Why users love it: leaderboards/trending categories make it fun and social.
+How: metadata dashboards + optional public “live wall” view.
+
+* A: —
+* B: ✅ (optional public view)
+* C: ✅
+
+---
+
+## 5) Add-ons block (must be below the comparison)
+
+Design: **cards with price type labels**: “One-time”, “Monthly”, “Usage-based”.
+
+Add-ons list (each with an info icon popover using the same template):
+
+1. **Advanced Prompt Engineering Pack**
+
+   * More categories/styles, prompt library, versioning, iterative refinement, multi-step chaining.
+2. **QA/QC Upgrade Pack**
+
+   * Stronger validation rules, smarter qualification steps, clearer user guidance (reduces wasted tokens).
+3. **Interactive Qualification Workflow**
+
+   * Multi-step wizard for complex templates (better user success rate).
+4. **Metadata Dashboard Upgrade**
+
+   * Better charts, segmentation, exports, live event view.
+5. **Full Storage Pack (Input + Output)**
+
+   * Object storage + retention rules + CDN delivery + backups.
+6. **User Account & Role Management Pack**
+
+   * Login, roles, user history, admin controls.
+7. **Reporting Pack**
+
+   * Scheduled exports, event report templates, CSV/PDF exports.
+8. **Managed Hosting & Deployment Pack**
+
+   * CI/CD, monitoring, uptime, scaling plan.
+9. **Support & Maintenance SLA**
+
+   * Response time tiers, update windows, incident handling.
+
+Tooltip/popover usage for “explain features in pricing” is common, but keep it accessible and not hover-only. ([Smashing Magazine][7])
+
+---
+
+## 6) FAQ / Q&A section spec (cost questions)
+
+### Layout
+
+* Accordion list (10–14 questions)
+* Add a “Search FAQ” input (filters questions)
+* Each answer includes:
+
+  * short summary (1–2 lines)
+  * bullet breakdown (cost drivers)
+  * “Which package is affected?” (A/B/C tags)
+
+### Must-have FAQ questions (focused on API cost, template cost, storage cost)
+
+1. **How is AI API cost calculated?**
+2. **What makes token usage higher or lower?**
+3. **How do you prevent wasting tokens on bad uploads?**
+4. **What is “template cost” vs “API cost”?**
+5. **What does “simple template” mean vs “complex multi-step template”?**
+6. **Do we store user images and generated outputs?**
+7. **What storage costs should we expect (metadata vs full images)?**
+8. **Can we choose not to store anything (stateless)?**
+9. **Can the client use their own AI API key to pay providers directly?**
+10. **What happens if the AI provider changes pricing or limits?**
+11. **What’s included in deployment & hosting cost?**
+12. **What’s included in documentation & maintenance?**
+13. **Can we upgrade from A → B → C later?**
+14. **What about privacy/consent for user-uploaded photos? (recommended)**
+
+### Structured data note (SEO)
+
+You *can* add FAQ structured data, but Google has limited FAQ rich results for most sites since 2023 (mainly authoritative gov/health). It can still help structure content, but don’t expect rich-result display. ([Google for Developers][8])
+
+---
+
+## 7) Pros & Cons block (must be at the bottom)
+
+Design:
+
+* 3 columns (A/B/C), each with:
+
+  * **Pros** list
+  * **Cons** list
+  * “Best for” one-liner
+
+Content (keep it blunt and clear):
+
+### Package A — Pros
+
+* Fastest + cheapest launch
+* No backend/DB complexity
+* Great for one-time events
+
+**Cons**
+
+* No saved history; refresh wipes results
+* No analytics/dashboard
+* Hard to control cost beyond basic checks
+
+### Package B — Pros
+
+* Captures user behavior (metadata)
+* Dashboard visibility + event monitoring
+* Lower wasted tokens via better QA/QC and prompts
+
+**Cons**
+
+* Doesn’t store full images/outputs long-term
+* More infra than A
+
+### Package C — Pros
+
+* Full database of users + inputs + outputs
+* Best reporting + future monetization
+* Most “real product” experience
+
+**Cons**
+
+* Highest build + maintenance scope
+* Requires stronger security/ops
+
+---
+
+## 8) Non-negotiable implementation requirements (so this doesn’t break UX)
+
+1. **Popover over tooltip for long content** (your details are “more,” so popover) ([Red Hat design system][4])
+2. **Accessible hover/focus content** (dismissible/hoverable/persistent) ([W3C][5])
+3. **Mobile behavior**: info icons open on tap (not hover)
+4. **Comparison table stays readable** on small screens:
+
+   * sticky first column
+   * horizontal scroll with fade indicator
+5. **“Expand all details” fallback** so people don’t need to hunt tooltips for critical understanding ([Nielsen Norman Group][6])
+
+---
+
+## 9) Dev handoff: data model (CMS/JSON)
+
+You can hand this to devs as the content contract:
+
+* `packages[]`: { id, name, tagline, bestFor, priceText, ctaText, ctaLink }
+* `comparisonViews[]` (3): “features”, “client_gets”, “user_benefits”
+* `rows[]`: { viewId, rowId, title, detailHtml, values: {A,B,C} }
+* `addons[]`: { id, title, priceType, short, detailHtml, compatiblePackages }
+* `faqs[]`: { q, answerHtml, tags: [api, template, storage, hosting, maintenance] }
+* `prosCons`: { packageId, pros[], cons[] }
+
+---
+
+If you want, I can also output **ready-to-paste copy** for every single popover (`detailHtml`) and the full FAQ answers in a consistent tone (so your landing page reads like a premium proposal, not a basic pricing table).
+
+[1]: https://www.nngroup.com/articles/comparison-tables/?utm_source=chatgpt.com "Comparison Tables for Products, Services, and Features"
+[2]: https://www.mrrunlocked.com/p/saas-pricing-page?utm_source=chatgpt.com "The Ultimate Guide to the perfect SaaS pricing page (incl. ..."
+[3]: https://www.simon-kucher.com/en/insights/mastering-tiered-pricing-strategy-revenue-maximization?utm_source=chatgpt.com "Mastering tiered pricing: Strategy for revenue maximization"
+[4]: https://ux.redhat.com/elements/popover/guidelines/?utm_source=chatgpt.com "Guidelines | Popover"
+[5]: https://www.w3.org/WAI/WCAG22/Understanding/content-on-hover-or-focus.html?utm_source=chatgpt.com "Understanding SC 1.4.13: Content on Hover or Focus ..."
+[6]: https://www.nngroup.com/articles/tooltip-guidelines/?utm_source=chatgpt.com "Tooltip Guidelines"
+[7]: https://www.smashingmagazine.com/2022/07/designing-better-pricing-page/?utm_source=chatgpt.com "Designing Effective Pricing Plans UX"
+[8]: https://developers.google.com/search/blog/2023/08/howto-faq-changes?utm_source=chatgpt.com "Changes to HowTo and FAQ rich results"
