@@ -936,7 +936,6 @@ function renderPlanCards() {
             <strong class="price">${escapeHtml(pkg.priceText)}</strong>
             <span class="price-note">Starting project price</span>
           </div>
-          <a class="btn btn-primary" href="${escapeHtml(pkg.ctaLink)}" data-track="plan_${pkg.id.toLowerCase()}_cta">${escapeHtml(pkg.ctaText)}</a>
           <ul class="mini-list">
             ${pkg.bullets.map((bullet) => `<li>${escapeHtml(bullet)}</li>`).join("")}
           </ul>

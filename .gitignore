@@ -1,0 +1,7 @@
+# Local secrets / credentials
+docs-not-push-to-github/
+**/git-token.txt
+
+# Common local env files
+.env
+.env.*
