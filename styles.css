@@ -635,6 +635,11 @@ h2 {
   gap: 6px;
 }
 
+.pros-cons-section {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
 .best-for-copy {
   margin: 12px 0 0;
   color: var(--ink-muted);
@@ -648,6 +653,10 @@ h2 {
   background: linear-gradient(155deg, rgba(139, 92, 246, 0.22), rgba(244, 114, 182, 0.12));
   margin-bottom: 28px;
   box-shadow: var(--shadow);
+}
+
+.final-cta .hero-actions {
+  justify-content: center;
 }
 
 .final-cta p {
