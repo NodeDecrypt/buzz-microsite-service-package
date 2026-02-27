@@ -46,7 +46,7 @@ const contentModel = {
   comparisonViews: [
     { id: "features", label: "Features included" },
     { id: "client_gets", label: "What you get" },
-    { id: "user_benefits", label: "What your fans get" }
+    { id: "user_benefits", label: "What your customers get" }
   ],
   rows: [
     {
@@ -57,9 +57,9 @@ const contentModel = {
     {
       viewId: "features",
       rowId: "social-sharing",
-      title: "Social Sharing for End-Users",
+      title: "Social Sharing for Customers",
       detail: {
-        definition: "Lets end-users share generated results quickly with friends.",
+        definition: "Lets customers share generated results quickly with friends.",
         build: "Share actions, channel-ready output options, and fast post-generation CTA flows.",
         drivers: "Supported channels, preview behavior, and tracking requirements.",
         impact: "Improves immediate post-generation engagement and organic spread during events.",
@@ -113,8 +113,8 @@ const contentModel = {
       detail: {
         definition: "Prompt engineering includes placeholder design and template complexity decisions (simple, controlled, or multi-step).",
         build: "We scope prompt library design, complexity level, and iteration depth as a manual estimate because needs vary by campaign.",
-        drivers: "Category count, complexity level, consistency targets, and review rounds requested by the client.",
-        impact: "Clients can choose quality depth intentionally without assuming fixed website-core scope.",
+        drivers: "Category count, complexity level, consistency targets, and review rounds requested by you.",
+        impact: "You can choose quality depth intentionally without assuming fixed website-core scope.",
         example: "One project may only need a simple placeholder prompt, while another may need multi-step prompt chains and validation logic."
       },
       values: { A: "◐ manual estimation", B: "◐ manual estimation", C: "◐ manual estimation" }
@@ -140,7 +140,7 @@ const contentModel = {
         definition: "Server layer protects keys, logs activity, and handles secure workflows.",
         build: "API endpoints, job handling, optional queue, and secret protection patterns.",
         drivers: "Concurrency, queueing requirements, and logging granularity.",
-        impact: "Improves security and reliability compared with client-only architecture.",
+        impact: "Improves security and reliability compared with a browser-only architecture.",
         example: "Provider keys stay server-side and never leak into browser code."
       },
       values: { A: "-", B: "✅ basic backend", C: "✅ full backend" }
@@ -187,7 +187,7 @@ const contentModel = {
         impact: "Provides a stable baseline for launch and event-day continuity.",
         example: "Package B includes managed baseline hosting while Package C keeps this baseline as foundation."
       },
-      values: { A: "◐ external/client-managed", B: "✅ basic only", C: "✅ basic" }
+      values: { A: "◐ external/self-managed", B: "✅ basic only", C: "✅ basic" }
     },
     {
       viewId: "features",
@@ -198,7 +198,7 @@ const contentModel = {
         build: "Event schema, tracking records, dashboard metrics, and export basics.",
         drivers: "Tracking schema scope and dashboard/report complexity.",
         impact: "Provides insight at lower storage cost than full media retention.",
-        example: "Client can review category popularity by hour without storing every image."
+        example: "You can review category popularity by hour without storing every image."
       },
       values: { A: "-", B: "✅", C: "✅" }
     },
@@ -257,7 +257,7 @@ const contentModel = {
     {
       viewId: "features",
       rowId: "user-management",
-      title: "End-User Management (Accounts / Roles)",
+      title: "Customer Management (Accounts / Roles)",
       detail: {
         definition: "User authentication and permission model for repeatable product usage.",
         build: "Login flow, profile storage, roles, and account management states.",
@@ -300,23 +300,23 @@ const contentModel = {
     },
     {
       viewId: "features",
-      rowId: "doc-client-guideline",
-      title: "Documentation Guideline for Client Team",
+      rowId: "doc-team-guideline",
+      title: "Documentation Guideline for Your Team",
       detail: {
-        definition: "Client-facing handbook for ownership, operations, and decision-making.",
-        build: "Scope summary, operating notes, and handover references for client stakeholders.",
+        definition: "Team handbook for ownership, operations, and decision-making.",
+        build: "Scope summary, operating notes, and handover references for your stakeholders.",
         drivers: "Depth of operational context and stakeholder onboarding needs.",
         impact: "Improves handoff quality and reduces dependency on ad-hoc explanations.",
-        example: "Client team can review package scope and operating boundaries before launch meetings."
+        example: "Your team can review package scope and operating boundaries before launch meetings."
       },
       values: { A: "✅", B: "✅", C: "✅" }
     },
     {
       viewId: "features",
-      rowId: "doc-end-user-guideline",
-      title: "Documentation Guideline for End-Users",
+      rowId: "doc-customer-guideline",
+      title: "Documentation Guideline for Customers",
       detail: {
-        definition: "End-user usage guide for smooth participation in generation flow.",
+        definition: "Customer usage guide for smooth participation in generation flow.",
         build: "User-facing instructions, expectations, and troubleshooting notes.",
         drivers: "Friction tolerance and event audience profile.",
         impact: "Reduces confusion and improves first-try completion rates.",
@@ -326,8 +326,8 @@ const contentModel = {
     },
     {
       viewId: "features",
-      rowId: "video-guideline-end-user",
-      title: "Video Guideline Animation for End-Users",
+      rowId: "video-guideline-customer",
+      title: "Video Guideline Animation for Customers",
       detail: {
         definition: "Short visual tutorial that explains the generation journey quickly.",
         build: "Animated walkthrough clips and visual cue guidance for common user actions.",
@@ -339,8 +339,8 @@ const contentModel = {
     },
     {
       viewId: "features",
-      rowId: "onsite-guideline-end-user",
-      title: "On-site Step-by-step Guideline for End-Users",
+      rowId: "onsite-guideline-customer",
+      title: "On-site Step-by-step Guideline for Customers",
       detail: {
         definition: "Live, guided on-site flow support for participants during the event.",
         build: "Step-by-step guided operations playbook for on-site assistance teams.",
@@ -356,11 +356,11 @@ const contentModel = {
       rowId: "clear-pricing",
       title: "Clear pricing structure (API + Template + Website)",
       detail: {
-        definition: "A transparent pricing split so clients understand where spend comes from.",
+        definition: "A transparent pricing split so you understand where spend comes from.",
         build: "Price communication mapped to API usage, template complexity, and site build plus ops.",
         drivers: "Higher control depth and higher operating scope increase package cost.",
         impact: "Less confusion in sales conversations and faster stakeholder alignment.",
-        example: "Client can see why API variability is separate from one-time template build work."
+        example: "You can see why API variability is separate from one-time template build work."
       },
       values: { A: "✅", B: "✅", C: "✅" }
     },
@@ -385,7 +385,7 @@ const contentModel = {
         definition: "Mechanisms that reduce failed or low-value generations.",
         build: "Prompt quality, upload QA/QC, and optional qualification steps before calling the API.",
         drivers: "Validation strictness and guidance quality across different package levels.",
-        impact: "Lower wasted spend and better output consistency for clients.",
+        impact: "Lower wasted spend and better output consistency for you.",
         example: "B and C reject weak uploads earlier, avoiding expensive failed runs."
       },
       values: { A: "◐", B: "✅", C: "✅ best" }
@@ -411,7 +411,7 @@ const contentModel = {
         definition: "Post-event reporting capability for sponsors and internal teams.",
         build: "Exportable metrics with optional deeper reporting if full database and storage are available.",
         drivers: "Data retention depth and reporting feature scope.",
-        impact: "Helps clients justify budget and improve future event design.",
+        impact: "Helps you justify budget and improve future event design.",
         example: "C can deliver detailed reports with historical media and user-level analysis."
       },
       values: { A: "-", B: "◐ limited", C: "✅" }
@@ -511,7 +511,7 @@ const contentModel = {
         definition: "Defines how deeply prompt operations are structured for each package level.",
         build: "Prompt playbooks, reusable templates, and quality controls aligned to package goals.",
         drivers: "Each level expands structure and governance depth without changing core user flow intent.",
-        impact: "Clearer quality expectations and faster alignment during client-facing sales discussions.",
+        impact: "Clearer quality expectations and faster alignment during sales discussions.",
         example: "Teams can explain what prompt support is included at each package level in one table row."
       }
     },
@@ -529,7 +529,7 @@ const contentModel = {
         definition: "Shows how validation quality scales across package levels.",
         build: "Validation rules, user correction guidance, and operational quality controls.",
         drivers: "Higher levels add clarity and governance rather than just more checks.",
-        impact: "Clients can quickly see how each level improves end-user success confidence.",
+        impact: "You can quickly see how each level improves customer success confidence.",
         example: "Sales can map validation maturity directly to event quality expectations."
       }
     },
@@ -548,7 +548,7 @@ const contentModel = {
         build: "Wizard flow design, staged checks, and user progression guidance.",
         drivers: "Higher levels provide broader path handling and richer guided logic.",
         impact: "Improves user confidence and completion quality in complex event use cases.",
-        example: "Client teams can position level differences without overloading users with jargon."
+        example: "Your team can position level differences without overloading users with jargon."
       }
     },
     {
@@ -564,7 +564,7 @@ const contentModel = {
       detail: {
         definition: "Makes dashboard value differences visible between package levels.",
         build: "Monitoring views, insight widgets, and report-ready analytics structures.",
-        drivers: "Each level adds decision depth and narrative clarity for client stakeholders.",
+        drivers: "Each level adds decision depth and narrative clarity for your stakeholders.",
         impact: "Helps sales teams articulate insight maturity without discussing technical overhead.",
         example: "B supports run-the-event monitoring while C supports strategic reporting conversations."
       }
@@ -583,8 +583,8 @@ const contentModel = {
         definition: "Explains what storage capability exists at each package level.",
         build: "Session handling, metadata persistence, and full media retention architecture.",
         drivers: "Each level expands historical depth and practical analytics utility.",
-        impact: "Clients can align storage expectations with event and reporting goals.",
-        example: "C supports complete media history when clients need long-term access and evidence."
+        impact: "You can align storage expectations with event and reporting goals.",
+        example: "C supports complete media history when you need long-term access and evidence."
       }
     },
     {
@@ -602,7 +602,7 @@ const contentModel = {
         build: "Authentication design, role boundaries, and account lifecycle controls.",
         drivers: "Capability appears where product-grade governance is needed.",
         impact: "Supports retention strategy and controlled access for advanced programs.",
-        example: "C enables admin and end-user role boundaries in one governed platform."
+        example: "C enables admin and customer role boundaries in one governed platform."
       }
     },
     {
@@ -616,7 +616,7 @@ const contentModel = {
         C: { value: "Advanced report intelligence", insight: "Deeper report packs for strategic and stakeholder decision workflows." }
       },
       detail: {
-        definition: "Frames reporting capabilities in a client-friendly service-level view.",
+        definition: "Frames reporting capabilities in a service-level view.",
         build: "Export structures, report templates, and insight communication assets.",
         drivers: "Higher levels add interpretive depth and stakeholder-readiness.",
         impact: "Makes reporting scope easy to explain during sales conversations.",
@@ -629,7 +629,7 @@ const contentModel = {
       priceType: "Service level",
       short: "Hosting maturity from external baseline to advanced managed operations.",
       levels: {
-        A: { value: "External or client-managed", insight: "Package A can run with lightweight externally managed hosting." },
+        A: { value: "External or self-managed", insight: "Package A can run with lightweight externally managed hosting." },
         B: { value: "Managed hosting basic", insight: "Baseline managed deployment and runtime operations support." },
         C: { value: "Managed hosting advanced", insight: "Expanded operations depth for stronger resilience and scale readiness." }
       },
@@ -637,7 +637,7 @@ const contentModel = {
         definition: "Describes hosting and operations readiness per package level.",
         build: "Deployment baseline, managed runtime support, and advanced operational controls.",
         drivers: "Each level reflects operations depth needed by the program maturity.",
-        impact: "Helps clients connect operational confidence with package selection.",
+        impact: "Helps you connect operational confidence with package selection.",
         example: "C includes advanced operations posture for high-stakes event environments."
       }
     },
@@ -645,17 +645,17 @@ const contentModel = {
       id: "addon-sla",
       title: "Support and Enablement Service Pack",
       priceType: "Service level",
-      short: "Documentation and end-user enablement maturity by package level.",
+      short: "Documentation and customer enablement maturity by package level.",
       levels: {
-        A: { value: "Client + end-user docs", insight: "Guideline documents for client team and participants." },
-        B: { value: "Docs + end-user video guide", insight: "Documentation plus animated guidance to accelerate onboarding." },
-        C: { value: "Docs + video + on-site guide", insight: "Full enablement including step-by-step on-site end-user guidance." }
+        A: { value: "Your team + customer docs", insight: "Guideline documents for your team and your customers." },
+        B: { value: "Docs + customer video guide", insight: "Documentation plus animated guidance to accelerate onboarding." },
+        C: { value: "Docs + video + on-site guide", insight: "Full enablement including step-by-step on-site customer guidance." }
       },
       detail: {
         definition: "Makes support and enablement scope explicit across package levels.",
-        build: "Documentation artifacts, end-user guidance media, and operational enablement steps.",
+        build: "Documentation artifacts, customer guidance media, and operational enablement steps.",
         drivers: "Higher levels deliver richer enablement outcomes for teams and participants.",
-        impact: "Clients can quickly understand support maturity differences before final selection.",
+        impact: "You can quickly understand support maturity differences before final selection.",
         example: "C gives teams both digital and on-site guidance readiness for premium delivery."
       }
     }
@@ -751,8 +751,8 @@ const contentModel = {
       tags: ["storage"]
     },
     {
-      q: "Can the client use their own AI API key to pay providers directly?",
-      summary: "Yes, client-owned keys are supported through secure server-side handling.",
+      q: "Can you use your own AI API key to pay providers directly?",
+      summary: "Yes, your own keys are supported through secure server-side handling.",
       drivers: [
         "Provider account ownership",
         "Key rotation policy",
