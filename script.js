@@ -5,7 +5,7 @@ const contentModel = {
       name: "Package A - Basic (Stateless)",
       tagline: "Fast launch with a simple stateless flow",
       bestFor: "Best for one-time campaigns and speed-to-event delivery.",
-      priceText: "$300",
+      priceText: "$299",
       ctaText: "See Package A Details",
       ctaLink: "#comparison",
       bullets: [
@@ -19,7 +19,7 @@ const contentModel = {
       name: "Package B - Insight (Metadata + Dashboard)",
       tagline: "Track behavior and improve token efficiency",
       bestFor: "Best for teams that need usage visibility and better quality control.",
-      priceText: "$500",
+      priceText: "$499",
       ctaText: "See Package B Details",
       ctaLink: "#comparison",
       bullets: [
@@ -33,7 +33,7 @@ const contentModel = {
       name: "Package C - Platform (Database + Users + Reporting)",
       tagline: "Full product foundation with storage and account flows",
       bestFor: "Best for long-term programs, reporting, and monetization readiness.",
-      priceText: "$700",
+      priceText: "$799",
       ctaText: "See Package C Details",
       ctaLink: "#comparison",
       bullets: [
