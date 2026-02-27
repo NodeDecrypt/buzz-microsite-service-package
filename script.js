@@ -56,6 +56,19 @@ const contentModel = {
     },
     {
       viewId: "features",
+      rowId: "social-sharing",
+      title: "Social Sharing for End-Users",
+      detail: {
+        definition: "Lets end-users share generated results quickly with friends.",
+        build: "Share actions, channel-ready output options, and fast post-generation CTA flows.",
+        drivers: "Supported channels, preview behavior, and tracking requirements.",
+        impact: "Improves immediate post-generation engagement and organic spread during events.",
+        example: "After generation, users can instantly share to social channels without extra manual steps."
+      },
+      values: { A: "✅", B: "✅", C: "✅" }
+    },
+    {
+      viewId: "features",
       rowId: "ai-api-integration",
       title: "AI API Integration",
       detail: {
@@ -66,6 +79,19 @@ const contentModel = {
         example: "If the provider briefly fails, retry logic recovers the request instead of dropping the user session."
       },
       values: { A: "✅ basic", B: "✅ with usage logging", C: "✅ with monitoring + controls" }
+    },
+    {
+      viewId: "features",
+      rowId: "qa-qc-upload",
+      title: "QA/QC for Input Resource (Upload Validation)",
+      detail: {
+        definition: "Checks upload quality before expensive AI calls are sent.",
+        build: "Format rules, size and resolution checks, optional subject checks, and actionable user guidance.",
+        drivers: "Validation strictness, number of checks, and compute-heavy qualification rules.",
+        impact: "Lower token waste and fewer disappointing outputs from bad inputs.",
+        example: "A blurry image is rejected with a clear fix tip before any generation cost is incurred."
+      },
+      values: { A: "Basic checks", B: "Intermediate checks + guidance", C: "Advanced checks + policies + logs" }
     },
     {
       viewId: "features",
@@ -95,32 +121,6 @@ const contentModel = {
     },
     {
       viewId: "features",
-      rowId: "qa-qc-upload",
-      title: "QA/QC for Input Resource (Upload Validation)",
-      detail: {
-        definition: "Checks upload quality before expensive AI calls are sent.",
-        build: "Format rules, size and resolution checks, optional subject checks, and actionable user guidance.",
-        drivers: "Validation strictness, number of checks, and compute-heavy qualification rules.",
-        impact: "Lower token waste and fewer disappointing outputs from bad inputs.",
-        example: "A blurry image is rejected with a clear fix tip before any generation cost is incurred."
-      },
-      values: { A: "Basic checks", B: "Intermediate checks + guidance", C: "Advanced checks + policies + logs" }
-    },
-    {
-      viewId: "features",
-      rowId: "qualification-workflow",
-      title: "Qualification Workflow (Multi-step Guidance)",
-      detail: {
-        definition: "Guided stepper flow helps users submit resources in the right order.",
-        build: "Stepper UI, per-step validation, previews, fix tips, and safe final submit behavior.",
-        drivers: "Number of steps and branching complexity of each template path.",
-        impact: "Improves first-try success rate and reduces support overhead during events.",
-        example: "Users fix wrong aspect ratio at step 2 instead of failing after final submit."
-      },
-      values: { A: "-", B: "◐ optional", C: "✅ included" }
-    },
-    {
-      viewId: "features",
       rowId: "website-core-ux",
       title: "Website Feature Development (Core UX)",
       detail: {
@@ -134,19 +134,6 @@ const contentModel = {
     },
     {
       viewId: "features",
-      rowId: "social-sharing",
-      title: "Social Sharing for End-Users",
-      detail: {
-        definition: "Lets end-users share generated results quickly with friends.",
-        build: "Share actions, channel-ready output options, and fast post-generation CTA flows.",
-        drivers: "Supported channels, preview behavior, and tracking requirements.",
-        impact: "Improves immediate post-generation engagement and organic spread during events.",
-        example: "After generation, users can instantly share to social channels without extra manual steps."
-      },
-      values: { A: "✅", B: "✅", C: "✅" }
-    },
-    {
-      viewId: "features",
       rowId: "backend-server",
       title: "Backend Server",
       detail: {
@@ -157,6 +144,19 @@ const contentModel = {
         example: "Provider keys stay server-side and never leak into browser code."
       },
       values: { A: "-", B: "✅ basic backend", C: "✅ full backend" }
+    },
+    {
+      viewId: "features",
+      rowId: "qualification-workflow",
+      title: "Qualification Workflow (Multi-step Guidance)",
+      detail: {
+        definition: "Guided stepper flow helps users submit resources in the right order.",
+        build: "Stepper UI, per-step validation, previews, fix tips, and safe final submit behavior.",
+        drivers: "Number of steps and branching complexity of each template path.",
+        impact: "Improves first-try success rate and reduces support overhead during events.",
+        example: "Users fix wrong aspect ratio at step 2 instead of failing after final submit."
+      },
+      values: { A: "-", B: "◐ optional", C: "✅ included" }
     },
     {
       viewId: "features",
@@ -178,6 +178,19 @@ const contentModel = {
     },
     {
       viewId: "features",
+      rowId: "hosting-basic",
+      title: "Hosting and Deployment (Basic)",
+      detail: {
+        definition: "Baseline deployment and hosting setup for production operation.",
+        build: "Core deployment flow, environment setup, and baseline runtime operations.",
+        drivers: "Traffic profile and required operational reliability.",
+        impact: "Provides a stable baseline for launch and event-day continuity.",
+        example: "Package B includes managed baseline hosting while Package C keeps this baseline as foundation."
+      },
+      values: { A: "◐ external/client-managed", B: "✅ basic only", C: "✅ basic" }
+    },
+    {
+      viewId: "features",
       rowId: "metadata-only",
       title: "User Resource Management: Metadata Only",
       detail: {
@@ -188,19 +201,6 @@ const contentModel = {
         example: "Client can review category popularity by hour without storing every image."
       },
       values: { A: "-", B: "✅", C: "✅" }
-    },
-    {
-      viewId: "features",
-      rowId: "full-storage",
-      title: "User Resource Management: Full Storage (Input + Output)",
-      detail: {
-        definition: "Stores uploads, generated outputs, and generation parameters for history.",
-        build: "Object storage, lifecycle rules, permissions, and record linking to events and users.",
-        drivers: "Storage volume, retention duration, and delivery strategy with CDN.",
-        impact: "Enables product-like history, re-download, and deeper reporting use cases.",
-        example: "Users can return after the event and re-download prior generated images."
-      },
-      values: { A: "-", B: "-", C: "✅" }
     },
     {
       viewId: "features",
@@ -217,19 +217,6 @@ const contentModel = {
     },
     {
       viewId: "features",
-      rowId: "database-advanced",
-      title: "Database Expansion (Advanced)",
-      detail: {
-        definition: "Advanced database layer for richer asset relationships, reporting, and governance.",
-        build: "Extended schema strategy, advanced backup and retention controls, and deeper data modeling.",
-        drivers: "Data complexity, retention obligations, and advanced reporting requirements.",
-        impact: "Supports product-grade historical analysis and stakeholder-level reporting.",
-        example: "Package C can correlate user activity, assets, and outcomes across longer timelines."
-      },
-      values: { A: "-", B: "-", C: "✅ advanced" }
-    },
-    {
-      viewId: "features",
       rowId: "dashboard-basic",
       title: "Dashboard (Basic)",
       detail: {
@@ -240,6 +227,19 @@ const contentModel = {
         example: "Package B operators can monitor top categories and basic success/failure rates."
       },
       values: { A: "-", B: "✅ basic only", C: "✅ basic" }
+    },
+    {
+      viewId: "features",
+      rowId: "full-storage",
+      title: "User Resource Management: Full Storage (Input + Output)",
+      detail: {
+        definition: "Stores uploads, generated outputs, and generation parameters for history.",
+        build: "Object storage, lifecycle rules, permissions, and record linking to events and users.",
+        drivers: "Storage volume, retention duration, and delivery strategy with CDN.",
+        impact: "Enables product-like history, re-download, and deeper reporting use cases.",
+        example: "Users can return after the event and re-download prior generated images."
+      },
+      values: { A: "-", B: "-", C: "✅" }
     },
     {
       viewId: "features",
@@ -269,16 +269,16 @@ const contentModel = {
     },
     {
       viewId: "features",
-      rowId: "hosting-basic",
-      title: "Hosting and Deployment (Basic)",
+      rowId: "database-advanced",
+      title: "Database Expansion (Advanced)",
       detail: {
-        definition: "Baseline deployment and hosting setup for production operation.",
-        build: "Core deployment flow, environment setup, and baseline runtime operations.",
-        drivers: "Traffic profile and required operational reliability.",
-        impact: "Provides a stable baseline for launch and event-day continuity.",
-        example: "Package B includes managed baseline hosting while Package C keeps this baseline as foundation."
+        definition: "Advanced database layer for richer asset relationships, reporting, and governance.",
+        build: "Extended schema strategy, advanced backup and retention controls, and deeper data modeling.",
+        drivers: "Data complexity, retention obligations, and advanced reporting requirements.",
+        impact: "Supports product-grade historical analysis and stakeholder-level reporting.",
+        example: "Package C can correlate user activity, assets, and outcomes across longer timelines."
       },
-      values: { A: "◐ external/client-managed", B: "✅ basic only", C: "✅ basic" }
+      values: { A: "-", B: "-", C: "✅ advanced" }
     },
     {
       viewId: "features",
